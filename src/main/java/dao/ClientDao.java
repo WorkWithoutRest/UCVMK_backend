@@ -10,5 +10,5 @@ public interface ClientDao {
     int save(Client client);
     void update(Client client);
     void delete(int id);
-    List<Client> findAll() throws SQLException;
+    List<Client> findAll();
 }

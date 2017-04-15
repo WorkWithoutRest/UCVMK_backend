@@ -7,12 +7,12 @@ import java.util.Date;
 public class Course {
     private int id;
     private String title;
-    private Text text;
+    private String text;
     private Date date_start;
     private Date date_finish;
     private Boolean status;
 
-    public Course(int id, String title, Text text, Date date_start, Date date_finish, Boolean status) {
+    public Course(int id, String title, String text, Date date_start, Date date_finish, Boolean status) {
         this.id = id;
         this.title = title;
         this.text = text;
@@ -29,11 +29,11 @@ public class Course {
         this.title = title;
     }
 
-    public Text getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(Text text) {
+    public void setText(String text) {
         this.text = text;
     }
 

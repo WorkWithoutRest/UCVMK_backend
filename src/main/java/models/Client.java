@@ -1,6 +1,5 @@
 package models;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 public class Client{
@@ -15,10 +14,11 @@ public class Client{
     private String street;
     private String house;
     private String appartment;
-    private BigInteger telephone;
+    private long telephone;
     private String status;
 
-    public Client(int id, String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, BigInteger telephone, String status) {
+
+    public Client(int id, String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status) {
         this.id = id;
         this.login = login;
         this.name = name;
@@ -122,11 +122,11 @@ public class Client{
         this.appartment = appartment;
     }
 
-    public BigInteger getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(BigInteger telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 
