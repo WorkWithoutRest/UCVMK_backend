@@ -1,12 +1,12 @@
 package models;
 
-public class teacher {
+public class Teacher {
     private int id;
     private String name;
     private String link;
     private String login;
 
-    public teacher(int id, String name, String link, String login) {
+    public Teacher(int id, String name, String link, String login) {
         this.id = id;
         this.name = name;
         this.link = link;

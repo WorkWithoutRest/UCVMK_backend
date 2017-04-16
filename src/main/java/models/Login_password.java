@@ -1,6 +1,6 @@
 package models;
 
-public class login_password {
+public class Login_password {
     private String login;
     private String password;
 
@@ -20,7 +20,7 @@ public class login_password {
         this.password = password;
     }
 
-    public login_password(String login, String password) {
+    public Login_password(String login, String password) {
 
         this.login = login;
         this.password = password;

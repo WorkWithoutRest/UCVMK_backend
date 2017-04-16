@@ -1,6 +1,6 @@
 package models;
 
-public class course_teacher {
+public class Course_teacher {
     private int course_id;
     private int teacher_id;
 
@@ -20,7 +20,7 @@ public class course_teacher {
         this.teacher_id = teacher_id;
     }
 
-    public course_teacher(int course_id, int teacher_id) {
+    public Course_teacher(int course_id, int teacher_id) {
 
         this.course_id = course_id;
         this.teacher_id = teacher_id;

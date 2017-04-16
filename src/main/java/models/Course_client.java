@@ -1,10 +1,10 @@
 package models;
 
-public class course_client {
+public class Course_client {
     private int client_id;
     private int course_id;
 
-    public course_client(int client_id, int course_id) {
+    public Course_client(int client_id, int course_id) {
         this.client_id = client_id;
         this.course_id = course_id;
     }

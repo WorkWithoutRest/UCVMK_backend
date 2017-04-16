@@ -1,10 +1,10 @@
 package models;
 
-public class employees {
+public class Employees {
     private int id;
     private String login;
 
-    public employees(int id, String login) {
+    public Employees(int id, String login) {
         this.id = id;
         this.login = login;
     }

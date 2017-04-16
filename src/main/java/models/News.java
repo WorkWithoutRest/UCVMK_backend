@@ -4,7 +4,7 @@ import javafx.scene.text.Text;
 
 import java.util.Date;
 
-public class news {
+public class News {
     private int id;
     private Date date;
     private Text text;
@@ -25,7 +25,7 @@ public class news {
         this.text = text;
     }
 
-    public news(int id, Date date, Text text) {
+    public News(int id, Date date, Text text) {
 
         this.id = id;
         this.date = date;
