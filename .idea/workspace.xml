@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b7002ac-4df3-4da4-8810-0540d8806b11" name="Default" comment="Client and Course dao completed">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/TeacherDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/TeacherDaoImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/course_client.java" afterPath="$PROJECT_DIR$/src/main/java/models/Course_client.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/course_teacher.java" afterPath="$PROJECT_DIR$/src/main/java/models/Course_teacher.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/employees.java" afterPath="$PROJECT_DIR$/src/main/java/models/Employees.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/login_password.java" afterPath="$PROJECT_DIR$/src/main/java/models/Login_password.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/news.java" afterPath="$PROJECT_DIR$/src/main/java/models/News.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/models/teacher.java" afterPath="$PROJECT_DIR$/src/main/java/models/Teacher.java" />
+    <list default="true" id="4b7002ac-4df3-4da4-8810-0540d8806b11" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/CourseDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/dao/CourseDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Course.java" afterPath="$PROJECT_DIR$/src/main/java/models/Course.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -539,20 +528,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ucvmk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ucvmk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1039,7 +1014,7 @@
       <workItem from="1492256034901" duration="2749000" />
       <workItem from="1492262808710" duration="3461000" />
       <workItem from="1492281178049" duration="11524000" />
-      <workItem from="1492342602771" duration="1818000" />
+      <workItem from="1492342602771" duration="2658000" />
     </task>
     <task id="LOCAL-00001" summary="Client and Course dao">
       <created>1492290682314</created>
@@ -1055,11 +1030,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492292057061</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Client and Course dao completed">
+      <created>1492344492326</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1492344492328</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31758000" />
+    <option name="totallyTimeSpent" value="32598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1109,7 +1091,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Client and Course dao" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client and Course dao" />
+    <MESSAGE value="Client and Course dao completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client and Course dao completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
