@@ -1,21 +1,21 @@
 package dao;
 
-import models.Teacher;
+import models.News;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TeacherDaoImpl implements TeacherDao{
+public class NewsDaoImpl implements NewsDao{
 
     private Connection connection;
     private String name="postgres";
     private String pass="";
     private String url="jdbc:postgresql://localhost:5432/Ucvmk";
 
-    public TeacherDaoImpl() {
+    public NewsDaoImpl() {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, name, pass);
@@ -26,18 +26,18 @@ public class TeacherDaoImpl implements TeacherDao{
         }
     }
 
-    public Teacher find(int id) {
+    public News find(int id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from teacher WHERE id=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from news WHERE id=?");
             preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            Teacher teacher=null;
+            News news=null;
             while (resultSet.next()) {
-                teacher = new Teacher(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4));
+                news = new News(resultSet.getInt(1), resultSet.getDate(2), resultSet.getString(3));
             }
-            return teacher;
+            return news;
         }
         catch (SQLException e)
         {
@@ -46,13 +46,12 @@ public class TeacherDaoImpl implements TeacherDao{
         }
     }
 
-    public int save(Teacher teacher) {
+    public int save(News news) {
         try{
-            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO teacher(name, link, login) " +
-                    "VALUES (?,?,?);");
-            preparedStatement.setString(1, teacher.getName());
-            preparedStatement.setString(2, teacher.getLink());
-            preparedStatement.setString(3, teacher.getLogin());
+            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO news(date, text) " +
+                    "VALUES (?,?);");
+            preparedStatement.setDate(1, new Date(news.getDate().getTime()));
+            preparedStatement.setString(2, news.getText());
             preparedStatement.executeUpdate();
             return 1;
         }
@@ -63,13 +62,12 @@ public class TeacherDaoImpl implements TeacherDao{
         }
     }
 
-    public void update(Teacher teacher) {
+    public void update(News news) {
         try{
-            PreparedStatement preparedStatement=connection.prepareStatement("UPDATE teacher SET name=?, link=?, login=? WHERE id=?");
-            preparedStatement.setString(1, teacher.getName());
-            preparedStatement.setString(2, teacher.getLink());
-            preparedStatement.setString(3, teacher.getLogin());
-            preparedStatement.setInt(4, teacher.getId());
+            PreparedStatement preparedStatement=connection.prepareStatement("UPDATE news SET date=?, text=? WHERE id=?");
+            preparedStatement.setDate(1, new Date(news.getDate().getTime()));
+            preparedStatement.setString(2, news.getText());
+            preparedStatement.setInt(3, news.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -80,7 +78,7 @@ public class TeacherDaoImpl implements TeacherDao{
 
     public void delete(int id) {
         try {
-            PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM teacher WHERE id=?");
+            PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM news WHERE id=?");
             preparedStatement.setInt(1,id);
             preparedStatement.executeUpdate();
         }
@@ -90,27 +88,27 @@ public class TeacherDaoImpl implements TeacherDao{
         }
     }
 
-    public List<Teacher> findAll() {
+    public List<News> findAll() {
         try
         {
             Statement statement=connection.createStatement();
-            ResultSet resultSet=statement.executeQuery("SELECT * FROM teacher");
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM news");
 
             int id;
-            String name, link, login;
-            List<Teacher> teachers=new ArrayList<Teacher>();
+            String text;
+            java.util.Date date;
+            List<News> newsList=new ArrayList<News>();
 
             while(resultSet.next())
             {
                 id=resultSet.getInt(1);
-                name=resultSet.getString(2);
-                link=resultSet.getString(3);
-                login=resultSet.getString(4);
+                date=resultSet.getDate(2);
+                text=resultSet.getString(3);
 
-                Teacher teacher=new Teacher(id, name, link, login);
-                teachers.add(teacher);
+                News news=new News(id, date,text);
+                newsList.add(news);
             }
-            return teachers;
+            return newsList;
         }
         catch (SQLException e) {
             Logger.getLogger(ClientDaoImpl.class.getName()).log(Level.SEVERE, null, e);

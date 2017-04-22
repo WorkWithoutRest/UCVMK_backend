@@ -7,7 +7,7 @@ import java.util.Date;
 public class News {
     private int id;
     private Date date;
-    private Text text;
+    private String text;
 
     public Date getDate() {
         return date;
@@ -17,18 +17,26 @@ public class News {
         this.date = date;
     }
 
-    public Text getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(Text text) {
+    public void setText(String text) {
         this.text = text;
     }
 
-    public News(int id, Date date, Text text) {
+    public News(int id, Date date, String text) {
 
         this.id = id;
         this.date = date;
         this.text = text;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
