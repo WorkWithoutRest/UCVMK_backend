@@ -1,7 +1,5 @@
 package dao;
 
-import models.Client;
-import models.Course;
 import models.Course_client;
 
 import java.util.List;
