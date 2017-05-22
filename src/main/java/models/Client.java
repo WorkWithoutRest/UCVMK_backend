@@ -32,7 +32,7 @@ public class Client{
         this.appartment = appartment;
         this.telephone = telephone;
         this.status = status;
-    }// made by Dmitrij
+    }// made by Dmitrij Lin
 
     public int getId() {
         return id;
