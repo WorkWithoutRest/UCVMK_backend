@@ -94,6 +94,11 @@ public class Course_clientDaoImpl implements Course_clientDao{
         }
     }
 
+
+    public boolean checkCourseForClient(int course_id, int client_id)
+    {
+        return true;
+    }
     public List<Course_client> findAll() {
         try
         {

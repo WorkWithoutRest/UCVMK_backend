@@ -17,6 +17,20 @@ public class Client{
     private long telephone;
     private String status;
 
+    public Client(String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status) {
+        this.login = login;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic_name = patronymic_name;
+        this.birth = birth;
+        this.email = email;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.appartment = appartment;
+        this.telephone = telephone;
+        this.status = status;
+    }
 
     public Client(int id, String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status) {
         this.id = id;

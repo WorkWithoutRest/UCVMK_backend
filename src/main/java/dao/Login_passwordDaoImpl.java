@@ -45,6 +45,28 @@ public class Login_passwordDaoImpl implements Login_passwordDao{
         }
     }
 
+    public int findLogin(String login)
+    {
+        try
+        {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from login_password WHERE login=?");
+            preparedStatement.setString(1, login);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next())
+            {
+                return 0;
+            }
+            else
+                return 1;
+        }
+        catch (SQLException e)
+        {
+            Logger.getLogger(ClientDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            return -1;
+        }
+    }
+
     public int save(Login_password login_password) {
         try{
             PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO login_password(login, password) " +
