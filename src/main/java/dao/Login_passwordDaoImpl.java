@@ -1,6 +1,7 @@
 package dao;
 
 import models.Login_password;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class Login_passwordDaoImpl implements Login_passwordDao{
     private String name="postgres";
     private String pass="";
     private String url="jdbc:postgresql://localhost:5432/Ucvmk";
+    private static int workload=12;
 
     public Login_passwordDaoImpl() {
         try {
@@ -70,12 +72,23 @@ public class Login_passwordDaoImpl implements Login_passwordDao{
         }
     }
 
+    public static boolean checkPassword(String password_plaintext, String stored_hash) {
+        boolean password_verified = false;
+
+        if(stored_hash==null || !stored_hash.startsWith("$2a$"))
+            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+
+        password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
+
+        return(password_verified);
+    }
+
     public int save(Login_password login_password) {
         try{
             PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO login_password(login, password) " +
                     "VALUES (?,?);");
             preparedStatement.setString(1, login_password.getLogin());
-            preparedStatement.setString(2, login_password.getPassword());
+            preparedStatement.setString(2, BCrypt.hashpw(login_password.getPassword(), BCrypt.gensalt(workload)));
             preparedStatement.executeUpdate();
             return 1;
         }
@@ -89,7 +102,7 @@ public class Login_passwordDaoImpl implements Login_passwordDao{
     public void updatePassword(Login_password login_password) {
         try{
             PreparedStatement preparedStatement=connection.prepareStatement("UPDATE login_password SET password=? WHERE login=?");
-            preparedStatement.setString(1, login_password.getPassword());
+            preparedStatement.setString(1, BCrypt.hashpw(login_password.getPassword(), BCrypt.gensalt(workload)));
             preparedStatement.setString(2, login_password.getLogin());
             preparedStatement.executeUpdate();
         }

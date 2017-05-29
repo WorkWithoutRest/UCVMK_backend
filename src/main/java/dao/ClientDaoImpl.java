@@ -1,6 +1,7 @@
 package dao;
 
 import models.Client;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.sql.Date;
@@ -29,15 +30,32 @@ public class ClientDaoImpl implements ClientDao{
     }
 
     public int getId_from_tocken(String tocken) {
-        return 0;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id from client WHERE tocken=?");
+            preparedStatement.setString(1, tocken);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            int id=0;
+            if (resultSet.next()) {
+                id=resultSet.getInt(1);
+            }
+            return id;
+        }
+        catch (SQLException e)
+        {
+            Logger.getLogger(ClientDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            return -1;
+        }
     }
 
-    public String createTocken(String login, String passwd) { // Дописать создание токена
-        return "";
+    public String createTocken(int id) { // Дописать создание токена
+
+        return BCrypt.hashpw(String.valueOf(id), BCrypt.gensalt(12));
     }
 
-    public void addTocken(String tocken) {
-        //add tocken
+    public void addTocken(String tocken, String login) {
+
     }
 
     public void deleteTocken(String tocken, String login) {
@@ -73,10 +91,12 @@ public class ClientDaoImpl implements ClientDao{
 
     }
 
+
+
     public int save(Client client) {
         try{
-            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO client (login, name, surname, patronymic_name, birth, email, city, street, house, appartment, telephone, status) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,'user');");
+            PreparedStatement preparedStatement=connection.prepareStatement("INSERT INTO client (login, name, surname, patronymic_name, birth, email, city, street, house, appartment, telephone, status, tocken) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,'user',?);");
             preparedStatement.setString(1, client.getLogin());
             preparedStatement.setString(2, client.getName());
             preparedStatement.setString(3, client.getSurname());
@@ -88,6 +108,7 @@ public class ClientDaoImpl implements ClientDao{
             preparedStatement.setString(9, client.getHouse());
             preparedStatement.setString(10, client.getAppartment());
             preparedStatement.setLong(11,client.getTelephone());
+            preparedStatement.setString(12, client.getTocken());
             preparedStatement.executeUpdate();
             return 1;
         }
@@ -100,7 +121,7 @@ public class ClientDaoImpl implements ClientDao{
 
     public void update(Client client) {
         try{
-            PreparedStatement preparedStatement=connection.prepareStatement("UPDATE client SET login=?, name=?,surname=?, patronymic_name=?, birth=?, email=?, city=?, street=?, house=?, appartment=?, telephone=? WHERE id=?");
+            PreparedStatement preparedStatement=connection.prepareStatement("UPDATE client SET login=?, name=?,surname=?, patronymic_name=?, birth=?, email=?, city=?, street=?, house=?, appartment=?, telephone=?, tocken=? WHERE id=?");
             preparedStatement.setString(1, client.getLogin());
             preparedStatement.setString(2, client.getName());
             preparedStatement.setString(3, client.getSurname());
@@ -112,6 +133,7 @@ public class ClientDaoImpl implements ClientDao{
             preparedStatement.setString(9, client.getHouse());
             preparedStatement.setString(10, client.getAppartment());
             preparedStatement.setLong(11,client.getTelephone());
+            preparedStatement.setString(12, createTocken(client.getId()));
             preparedStatement.setInt(12,client.getId());
             preparedStatement.executeUpdate();
         }
@@ -173,4 +195,5 @@ public class ClientDaoImpl implements ClientDao{
             return null;
         }
     }
+
 }

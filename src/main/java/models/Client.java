@@ -16,8 +16,17 @@ public class Client{
     private String appartment;
     private long telephone;
     private String status;
+    private String tocken;
 
-    public Client(String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status) {
+    public String getTocken() {
+        return tocken;
+    }
+
+    public void setTocken(String tocken) {
+        this.tocken = tocken;
+    }
+
+    public Client(String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status, String tocken) {
         this.login = login;
         this.name = name;
         this.surname = surname;
@@ -30,6 +39,8 @@ public class Client{
         this.appartment = appartment;
         this.telephone = telephone;
         this.status = status;
+        this.tocken = tocken;
+
     }
 
     public Client(int id, String login, String name, String surname, String patronymic_name, Date birth, String email, String city, String street, String house, String appartment, long telephone, String status) {
