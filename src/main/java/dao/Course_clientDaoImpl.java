@@ -26,6 +26,27 @@ public class Course_clientDaoImpl implements Course_clientDao{
         }
     }
 
+    public boolean check_course_for_client(int client_id, int course_id) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT client_id from course_client WHERE cource_id=? and client_id = ?");
+            preparedStatement.setInt(1, course_id);
+            preparedStatement.setInt(2, client_id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int result = -1;
+            while (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+            if (result != -1)
+                return true;
+        }
+        catch (SQLException e)
+        {
+
+        }
+        return false;
+    }
+
     public List<Integer> findClient(int id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT client_id from course_client WHERE cource_id=?");

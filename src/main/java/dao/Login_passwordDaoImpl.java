@@ -26,6 +26,9 @@ public class Login_passwordDaoImpl implements Login_passwordDao{
         }
     }
 
+
+
+
     public String findPassword(String login) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT password from login_password WHERE login=?");

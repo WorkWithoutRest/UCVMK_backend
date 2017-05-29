@@ -28,6 +28,26 @@ public class ClientDaoImpl implements ClientDao{
         }
     }
 
+    public int getId_from_tocken(String tocken) {
+        return 0;
+    }
+
+    public String createTocken(String login, String passwd) { // Дописать создание токена
+        return "";
+    }
+
+    public void addTocken(String tocken) {
+        //add tocken
+    }
+
+    public void deleteTocken(String tocken, String login) {
+        //delete tocken
+    }
+
+    public boolean checkTocken(String tocken) {
+        return true;// дописать проверку на наличие токена
+    }
+
 
     public Client find(int id) {
         try {
